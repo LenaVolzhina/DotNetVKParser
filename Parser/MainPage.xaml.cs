@@ -26,11 +26,29 @@ namespace Parser
         {
             this.InitializeComponent();
 
-            FriendsList list = new FriendsList(1774688);    // fetching your friends
+            // loading friends list by user id
+            // masha 1774688
+            FriendsList list = new FriendsList(1);  // durov -- works fast!
             while (!list.isReady)
-                System.Threading.Tasks.Task.Delay(TimeSpan.FromSeconds(1)).Wait();
+            {
+                System.Threading.Tasks.Task.Delay(TimeSpan.FromSeconds(0.01)).Wait();
+            }
+            // now list is ready
+            // every friend in list has basic fields
 
-            // now it's ready, have fun :)
+            // loading user profile by user id
+            User masha = new User(1774688);
+            while (!masha.isReady)
+                System.Threading.Tasks.Task.Delay(TimeSpan.FromSeconds(0.01)).Wait();
+            // now user is ready
+            // user has also additional fields (if it is not hidden)
+            UserDescription profile = masha.getDescription();
+            System.Diagnostics.Debug.WriteLine(profile.about);
+
+            // loading user's friend
+            FriendsList mashas_friends = masha.getFriends();
+            foreach (UserDescription friend in mashas_friends)
+                System.Diagnostics.Debug.WriteLine(friend.lastName);
         }
     }
 }
