@@ -35,5 +35,10 @@ namespace Parser
                         select new UserDescription(elements);
             friends = users.ToList();
         }
+
+        public IEnumerator<UserDescription> GetEnumerator()
+        {
+            return friends.GetEnumerator();
+        }
     }
 }
