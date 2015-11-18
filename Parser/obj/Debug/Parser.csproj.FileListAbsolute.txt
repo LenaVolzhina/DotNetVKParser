@@ -1,0 +1,14 @@
+c:\users\masha\documents\visual studio 2015\Projects\Parser\Parser\bin\Debug\Parser.exe.config
+c:\users\masha\documents\visual studio 2015\Projects\Parser\Parser\bin\Debug\Parser.exe
+c:\users\masha\documents\visual studio 2015\Projects\Parser\Parser\bin\Debug\Parser.pdb
+c:\users\masha\documents\visual studio 2015\Projects\Parser\Parser\obj\Debug\Parser.csprojResolveAssemblyReference.cache
+c:\users\masha\documents\visual studio 2015\Projects\Parser\Parser\obj\Debug\MainWindow.g.cs
+c:\users\masha\documents\visual studio 2015\Projects\Parser\Parser\obj\Debug\App.g.cs
+c:\users\masha\documents\visual studio 2015\Projects\Parser\Parser\obj\Debug\Parser_MarkupCompile.cache
+c:\users\masha\documents\visual studio 2015\Projects\Parser\Parser\obj\Debug\Parser_MarkupCompile.lref
+c:\users\masha\documents\visual studio 2015\Projects\Parser\Parser\obj\Debug\MainWindow.baml
+c:\users\masha\documents\visual studio 2015\Projects\Parser\Parser\obj\Debug\Parser.g.resources
+c:\users\masha\documents\visual studio 2015\Projects\Parser\Parser\obj\Debug\Parser.Properties.Resources.resources
+c:\users\masha\documents\visual studio 2015\Projects\Parser\Parser\obj\Debug\Parser.csproj.GenerateResource.Cache
+c:\users\masha\documents\visual studio 2015\Projects\Parser\Parser\obj\Debug\Parser.exe
+c:\users\masha\documents\visual studio 2015\Projects\Parser\Parser\obj\Debug\Parser.pdb
