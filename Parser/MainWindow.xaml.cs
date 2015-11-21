@@ -60,6 +60,7 @@ namespace Parser
             this.listBox1.Visibility = System.Windows.Visibility.Hidden;
             this.listBox2.Visibility = System.Windows.Visibility.Visible;
 
+
             this.listBox2.ItemsSource = mashas_friends.friends;
         }
 
