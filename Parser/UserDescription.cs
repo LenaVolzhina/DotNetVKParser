@@ -83,7 +83,6 @@ namespace Parser
     public class UserDescription
     {
         // docs: https://vk.com/dev/fields
-
         // basic:
         public int id { get; set; }
         public string firstName { get; set; }
@@ -103,6 +102,7 @@ namespace Parser
         public int followersCount { get; set; }
 
         // only for separate user:
+
         public string homePhone { get; set; } = null;
         public string skype { get; set; } = null;
         public string facebook { get; set; } = null;
@@ -117,6 +117,7 @@ namespace Parser
         public int notesNum { get; set; }
         public int photosNum { get; set; }
         public int giftsNum { get; set; }
+
 
         public string activities { get; set; } = null;
         public string interests { get; set; } = null;
@@ -184,7 +185,7 @@ namespace Parser
                         var names = from item in elem.Descendants("university")
                                     select item.Element("name").Value;
                         foreach (string name in names)
-                            universities.Add(name);
+                            universities.Add(name);                     
                         break;
                     case "status":
                         status = elem.Value;
@@ -266,3 +267,4 @@ namespace Parser
 
     }
 }
+
