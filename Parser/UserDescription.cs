@@ -80,53 +80,53 @@ namespace Parser
         };
     }
 
-    class UserDescription
+    public class UserDescription
     {
         // docs: https://vk.com/dev/fields
 
         // basic:
-        public int id;
-        public string firstName;
-        public string lastName;
-        public bool deactivated = false;
-        public bool hidden = false;
-        public string photoId = null;
-        public int sex = 0;         // 1 - f, 2 - m, 0 - unknown
-        public string bdate = null;
-        public string city = null;
-        public string country = null;
-        public bool online = false;
-        public string domain = null;
-        public string site = null;
-        public List<string> universities;       // just names
-        public string status = null;
-        public int followersCount;
+        public int id { get; set; }
+        public string firstName { get; set; }
+        public string lastName { get; set; }
+        public bool deactivated  { get; set; } = false;
+        public bool hidden { get; set; } = false;
+        public string photoId { get; set; } = null;
+        public int sex { get; set; } = 0;         // 1 - f, 2 - m, 0 - unknown
+        public string bdate { get; set; } = null;
+        public string city { get; set; } = null;
+        public string country { get; set; } = null;
+        public bool online { get; set; } = false;
+        public string domain { get; set; } = null;
+        public string site { get; set; } = null;
+        public List<string> universities { get; set; }      // just names
+        public string status { get; set; } = null;
+        public int followersCount { get; set; }
 
         // only for separate user:
-        public string homePhone = null;
-        public string skype = null;
-        public string facebook = null;
-        public string facebookName = null;
-        public string instagramName = null;
-        public string twitterName = null;
+        public string homePhone { get; set; } = null;
+        public string skype { get; set; } = null;
+        public string facebook { get; set; } = null;
+        public string facebookName { get; set; } = null;
+        public string instagramName { get; set; } = null;
+        public string twitterName { get; set; } = null;
 
-        public bool hasCounters = false;
-        public int albumsNum;
-        public int videosNum;
-        public int audiosNum;
-        public int notesNum;
-        public int photosNum;
-        public int giftsNum;
+        public bool hasCounters { get; set; } = false;
+        public int albumsNum { get; set; }
+        public int videosNum { get; set; }
+        public int audiosNum { get; set; }
+        public int notesNum { get; set; }
+        public int photosNum { get; set; }
+        public int giftsNum { get; set; }
 
-        public string activities = null;
-        public string interests = null;
-        public string music = null;
-        public string movies = null;
-        public string tv = null;
-        public string books = null;
-        public string games = null;
-        public string about = null;
-        public string quotes = null;
+        public string activities { get; set; } = null;
+        public string interests { get; set; } = null;
+        public string music { get; set; } = null;
+        public string movies { get; set; } = null;
+        public string tv { get; set; } = null;
+        public string books { get; set; } = null;
+        public string games { get; set; } = null;
+        public string about { get; set; } = null;
+        public string quotes { get; set; } = null;
 
 
 
@@ -262,5 +262,7 @@ namespace Parser
                 }
             }
         }
+
+
     }
 }

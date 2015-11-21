@@ -5,16 +5,51 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Parser"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
+        Title="VKParser" Height="700" Width="800" HorizontalAlignment="Center" VerticalAlignment="Top" Icon="vk.ico">
     <Grid Margin="0,0,-8,-20">
-        <Grid HorizontalAlignment="Left" Height="320" Margin="31,10,0,0" VerticalAlignment="Top" Width="494">
+        <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="100*"/>
+                <ColumnDefinition Width="50*"/>
+                <ColumnDefinition Width="50*"/>
+            </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
-                <RowDefinition Height="63*"/>
-                <RowDefinition Height="113*"/>
-                <RowDefinition Height="77*"/>
+                <RowDefinition Height="37*"/>
+                <RowDefinition Height="172*"/>
+                <RowDefinition Height="240*"/>
+                <RowDefinition Height="241*"/>
             </Grid.RowDefinitions>
-            <TextBox x:Name="textBox" HorizontalAlignment="Left" Height="20" Margin="10,10,0,0" TextWrapping="Wrap" Text="Give me id" VerticalAlignment="Top" Width="187"/>
-            <Button x:Name="buttonSearch" Content="Search" HorizontalAlignment="Left" Height="20" Margin="299,10,0,0" VerticalAlignment="Top" Width="75" Click="buttonSearch_Click"/>
+            <TextBox x:Name="textBox" HorizontalAlignment="Stretch"  TextWrapping="Wrap" Text="1" VerticalAlignment="Stretch" />
+            <Button x:Name="button" Content="profile" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="button_Click"/>
+            <Button x:Name="button2" Content="friends" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Top" Height="37" Click="button2_Click"/>
+            <ListBox x:Name="listBox1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.RowSpan="2" Grid.ColumnSpan="3" Grid.Row="2" Visibility="Visible">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Vertical">
+                            <TextBlock Text="{Binding Path = firstName, StringFormat='Имя: {0}'}"></TextBlock>
+                            <TextBlock Text="{Binding lastName}"></TextBlock>
+                            <TextBlock Text="{Binding Path = movies}"></TextBlock>
+                            <TextBlock Text="{Binding lastName}"></TextBlock>
+                        </StackPanel>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+
+
+            <ListBox x:Name="listBox2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.RowSpan="2" Grid.ColumnSpan="3" Grid.Row="2" Visibility="Hidden" PreviewMouseDown ="listBox_PreviewMouseDown">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text=" "></TextBlock>
+                            <TextBlock Text="{Binding id}"></TextBlock>
+                            <TextBlock Text=" "></TextBlock>
+                            <TextBlock Text="{Binding firstName}"></TextBlock>
+                            <TextBlock Text=" "></TextBlock>
+                            <TextBlock Text="{Binding lastName}"></TextBlock>
+                        </StackPanel>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
         </Grid>
 
     </Grid>
