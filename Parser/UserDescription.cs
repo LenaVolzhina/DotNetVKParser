@@ -130,56 +130,68 @@ namespace Parser
         public string quotes { get; set; } = null;
 
 
+        private  string changeValue(string value)
+        {
+            if (value == null)
+                return value;
+            if (value.Length == 0)
+            {
+                return null;
+            }
+            return value;
+        }
+
 
         public UserDescription(IEnumerable<System.Xml.Linq.XElement> elements)
         {
             universities = new List<string>();
             foreach (var elem in elements)
             {
+                string temp = changeValue(elem.Value);
                 switch (elem.Name.ToString())
                 {
                     case "uid":
-                        id = int.Parse(elem.Value);
+                        id = int.Parse(temp);
                         break;
                     case "first_name":
-                        firstName = elem.Value;
+                        firstName = temp;
                         break;
                     case "last_name":
-                        lastName = elem.Value;
+                        lastName = temp;
                         break;
                     case "deactivated":
-                        deactivated = elem.Value == "1";
+                        deactivated = temp == "1";
                         break;
                     case "hidden":
-                        hidden = elem.Value == "1";
+                        hidden = temp == "1";
                         break;
                     case "photo_id":
-                        photoId = elem.Value;
+                        photoId = temp;
                         break;
                     case "sex":
-                        sex = int.Parse(elem.Value);
+                        sex = int.Parse(temp);
                         break;
                     case "bdate":
-                        bdate = elem.Value;
+                        bdate = temp;
                         break;
                     case "city":
-                        int city_code = int.Parse(elem.Value);
+                        int city_code = int.Parse(temp);
                         if (Constants.cities.ContainsKey(city_code))
                             city = Constants.cities[city_code];
                         break;
                     case "country":
-                        int country_code = int.Parse(elem.Value);
+                        int country_code = int.Parse(temp);
                         if (Constants.countries.ContainsKey(country_code))
                             country = Constants.countries[country_code];
                         break;
                     case "online":
-                        online = elem.Value == "1";
+                        online = temp == "1";
                         break;
                     case "domain":
-                        domain = elem.Value;
+                        domain = temp;
                         break;
                     case "site":
-                        site = elem.Value;
+                        site = temp;
                         break;
                     case "universities":
                         var names = from item in elem.Descendants("university")
@@ -188,71 +200,71 @@ namespace Parser
                             universities.Add(name);                     
                         break;
                     case "status":
-                        status = elem.Value;
+                        status = temp;
                         break;
                     case "followers_count":
-                        followersCount = int.Parse(elem.Value);
+                        followersCount = int.Parse(temp);
                         break;
 
                     case "skype":
-                        skype = elem.Value;
+                        skype = temp;
                         break;
                     case "facebook":
-                        facebook = elem.Value;
+                        facebook = temp;
                         break;
                     case "facebook_name":
-                        facebookName = elem.Value;
+                        facebookName = temp;
                         break;
                     case "instagram":
-                        instagramName = elem.Value;
+                        instagramName = temp;
                         break;
                     case "twitter":
-                        twitterName = elem.Value;
+                        twitterName = temp;
                         break;
                     case "albums":
-                        albumsNum = int.Parse(elem.Value);
+                        albumsNum = int.Parse(temp);
                         break;
                     case "videos":
-                        videosNum = int.Parse(elem.Value);
+                        videosNum = int.Parse(temp);
                         break;
                     case "audios":
-                        audiosNum = int.Parse(elem.Value);
+                        audiosNum = int.Parse(temp);
                         break;
                     case "notes":
-                        notesNum = int.Parse(elem.Value);
+                        notesNum = int.Parse(temp);
                         break;
                     case "photos":
-                        photosNum = int.Parse(elem.Value);
+                        photosNum = int.Parse(temp);
                         break;
                     case "gifts":
-                        giftsNum = int.Parse(elem.Value);
+                        giftsNum = int.Parse(temp);
                         break;
                     case "activities":
-                        activities = elem.Value;
+                        activities = temp;
                         break;
                     case "interests":
-                        interests = elem.Value;
+                        interests = temp;
                         break;
                     case "music":
-                        music = elem.Value;
+                        music = temp;
                         break;
                     case "movies":
-                        movies = elem.Value;
+                        movies = temp;
                         break;
                     case "tv":
-                        tv = elem.Value;
+                        tv = temp;
                         break;
                     case "books":
-                        books = elem.Value;
+                        books = temp;
                         break;
                     case "games":
-                        games = elem.Value;
+                        games = temp;
                         break;
                     case "about":
-                        about = elem.Value;
+                        about = temp;
                         break;
                     case "quotes":
-                        quotes = elem.Value;
+                        quotes = temp;
                         break;
                     default:
                         if ((elem.Name != "user_id") && (elem.Name != "lists") &&

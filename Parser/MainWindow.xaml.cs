@@ -69,7 +69,9 @@ namespace Parser
             var item = ItemsControl.ContainerFromElement(listBox2, e.OriginalSource as DependencyObject) as ListBoxItem;
             if (item != null)
             {
-                makesomeshit(((UserDescription) item.DataContext).id);
+                var tmp = ((UserDescription)item.DataContext).id;
+                textBox.Text = tmp.ToString();
+                makesomeshit(tmp);
             }
         }
     }

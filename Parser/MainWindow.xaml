@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Parser"
+        xmlns:sys="clr-namespace:System;assembly=mscorlib"
         mc:Ignorable="d"
         Title="VKParser" Height="700" Width="800" HorizontalAlignment="Center" VerticalAlignment="Top" Icon="vk.ico">
     <Grid Margin="0,0,-8,-20">
@@ -21,35 +22,45 @@
             </Grid.RowDefinitions>
             <TextBox x:Name="textBox" HorizontalAlignment="Stretch"  TextWrapping="Wrap" Text="1" VerticalAlignment="Stretch" />
             <Button x:Name="button" Content="profile" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="button_Click"/>
-            <Button x:Name="button2" Content="friends" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Top" Height="37" Click="button2_Click"/>
+            <Button x:Name="button2" Content="friends" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="button2_Click"/>
             <ListBox x:Name="listBox1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.RowSpan="2" Grid.ColumnSpan="3" Grid.Row="2" Visibility="Visible">
                 <ListBox.ItemTemplate>
                     <DataTemplate>
                         <StackPanel Orientation="Vertical">
                             <TextBlock Text="{Binding Path = firstName, StringFormat='Имя: {0}'}"></TextBlock>
-                            <TextBlock Text="{Binding lastName}"></TextBlock>
-                            <TextBlock Text="{Binding Path = movies}"></TextBlock>
-                            <TextBlock Text="{Binding lastName}"></TextBlock>
+                            <TextBlock Text="{Binding Path = lastName, StringFormat='Фамилия: {0}'}"></TextBlock>
+                            <TextBlock Text="{Binding Path = movies, TargetNullValue='не заполнено'}" ></TextBlock>
+                            <TextBlock Text="{Binding Path=skype, TargetNullValue='не заполнено'}"></TextBlock>
+                            <TextBlock Text="{Binding Path=firstName, TargetNullValue='не заполнено'}"></TextBlock>
                         </StackPanel>
                     </DataTemplate>
                 </ListBox.ItemTemplate>
             </ListBox>
 
-
-            <ListBox x:Name="listBox2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.RowSpan="2" Grid.ColumnSpan="3" Grid.Row="2" Visibility="Hidden" PreviewMouseDown ="listBox_PreviewMouseDown">
-                <ListBox.ItemTemplate>
-                    <DataTemplate>
-                        <StackPanel Orientation="Horizontal">
-                            <TextBlock Text=" "></TextBlock>
-                            <TextBlock Text="{Binding id}"></TextBlock>
-                            <TextBlock Text=" "></TextBlock>
-                            <TextBlock Text="{Binding firstName}"></TextBlock>
-                            <TextBlock Text=" "></TextBlock>
-                            <TextBlock Text="{Binding lastName}"></TextBlock>
-                        </StackPanel>
-                    </DataTemplate>
-                </ListBox.ItemTemplate>
-            </ListBox>
+            <ListView  x:Name="listBox2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.RowSpan="2" Grid.ColumnSpan="3" Grid.Row="2" Visibility="Hidden" MouseDoubleClick="listBox_PreviewMouseDown">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Header="Имя" Width="120" DisplayMemberBinding="{Binding firstName}" />
+                        <GridViewColumn Header="Фамилия" Width="50" DisplayMemberBinding="{Binding lastName}" />
+                    </GridView>
+                </ListView.View>
+                <ListView.Resources>
+                    <Style  TargetType="{x:Type ListViewItem}">
+                        <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                        <Setter Property="VerticalContentAlignment"   Value="Stretch" />
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="{x:Type ListViewItem}">
+                                    <Expander Header="{Binding id}">
+                                        <GridViewRowPresenter VerticalAlignment="{TemplateBinding VerticalContentAlignment}" Grid.IsSharedSizeScope="True">
+                                        </GridViewRowPresenter>
+                                    </Expander>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+                </ListView.Resources>
+            </ListView>
         </Grid>
 
     </Grid>
