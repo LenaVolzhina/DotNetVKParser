@@ -8,7 +8,7 @@
         mc:Ignorable="d"
         Title="VKParser" Height="700" Width="800" HorizontalAlignment="Center" VerticalAlignment="Top" Icon="vk.ico">
     <Grid Margin="0,0,-8,-20">
-        <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+        <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="0,46,10,0">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="100*"/>
                 <ColumnDefinition Width="50*"/>
@@ -20,28 +20,42 @@
                 <RowDefinition Height="240*"/>
                 <RowDefinition Height="241*"/>
             </Grid.RowDefinitions>
-            <TextBox x:Name="textBox" HorizontalAlignment="Stretch"  TextWrapping="Wrap" Text="1" VerticalAlignment="Stretch" />
-            <Button x:Name="button" Content="profile" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="button_Click"/>
-            <Button x:Name="button2" Content="friends" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="button2_Click"/>
-            <ListBox x:Name="listBox1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.RowSpan="2" Grid.ColumnSpan="3" Grid.Row="2" Visibility="Visible">
+            <TextBox x:Name="textBox" HorizontalAlignment="Stretch"  TextWrapping="Wrap" Text="1" VerticalAlignment="Stretch" Margin="45,5,35,5" />
+            <Button x:Name="button" Content="Профиль" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="button_Click" Margin="30,0,30,0"/>
+            <Button x:Name="button2" Content="Список друзей" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="button2_Click" Margin="30,0,30,0"/>
+            <ListBox x:Name="listBox1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.RowSpan="3" Grid.ColumnSpan="3" Grid.Row="1" Visibility="Visible" Margin="0,63,0,0">
                 <ListBox.ItemTemplate>
                     <DataTemplate>
                         <StackPanel Orientation="Vertical">
                             <TextBlock Text="{Binding Path = firstName, StringFormat='Имя: {0}'}"></TextBlock>
                             <TextBlock Text="{Binding Path = lastName, StringFormat='Фамилия: {0}'}"></TextBlock>
-                            <TextBlock Text="{Binding Path = movies, TargetNullValue='не заполнено'}" ></TextBlock>
-                            <TextBlock Text="{Binding Path=skype, TargetNullValue='не заполнено'}"></TextBlock>
-                            <TextBlock Text="{Binding Path=firstName, TargetNullValue='не заполнено'}"></TextBlock>
+                            <TextBlock Text="{Binding Path = bdate, TargetNullValue ='Дата рождения: не заполнено', StringFormat='Дата рождения: {0}'}" ></TextBlock>
+                            <TextBlock Text="{Binding Path = country, TargetNullValue ='Страна: не заполнено', StringFormat='Страна: {0}'}" ></TextBlock>
+                            <TextBlock Text="{Binding Path = city, TargetNullValue ='Город: не заполнено', StringFormat='Город: {0}'}" ></TextBlock>
+                            <TextBlock Text="{Binding Path = status, TargetNullValue ='Статус: не заполнено', StringFormat='Статус: {0}'}" ></TextBlock>
+                            <TextBlock Text="{Binding Path = twitterName, TargetNullValue ='Twitter: не заполнено', StringFormat='Twitter: {0}'}" ></TextBlock>
+                            <TextBlock Text="{Binding Path = homePhone, TargetNullValue='Телефон: не заполнено', StringFormat='Телефон: {0}'}"></TextBlock>
+                            <TextBlock Text="{Binding Path = facebook, TargetNullValue ='Facebook: не заполнено', StringFormat='Facebook: {0}'}" ></TextBlock>
+                            <TextBlock Text="{Binding Path = skype, TargetNullValue ='Skype: не заполнено', StringFormat='Skype: {0}'}" ></TextBlock>
+                            <TextBlock Text="{Binding Path = instagramName, TargetNullValue ='Instagram: не заполнено', StringFormat='Instagram: {0}'}" ></TextBlock>
+                            <TextBlock Text="{Binding Path = twitterName, TargetNullValue ='Twitter: не заполнено', StringFormat='Twitter: {0}'}" ></TextBlock>
+                            <TextBlock Text="{Binding Path = activities, TargetNullValue ='Деятельность: не заполнено', StringFormat='Деятельность: {0}'}" ></TextBlock>
+                            <TextBlock Text="{Binding Path = interests, TargetNullValue ='Интересы: не заполнено', StringFormat='Интересы: {0}'}" ></TextBlock>
+                            <TextBlock Text="{Binding Path = music, TargetNullValue ='Любимая музыка: не заполнено', StringFormat='Любимая музыка: {0}'}" ></TextBlock>
+                            <TextBlock Text="{Binding Path = movies, TargetNullValue ='Любимые фильмы: не заполнено', StringFormat='Любимые фильмы: {0}'}" ></TextBlock>
+                            <TextBlock Text="{Binding Path = books, TargetNullValue ='Любимые книги: не заполнено', StringFormat='Любимые книги: {0}'}" ></TextBlock>
+                            <TextBlock Text="{Binding Path = about, TargetNullValue ='О себе: не заполнено', StringFormat='О себе: {0}'}" ></TextBlock>
                         </StackPanel>
                     </DataTemplate>
                 </ListBox.ItemTemplate>
             </ListBox>
 
-            <ListView  x:Name="listBox2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.RowSpan="2" Grid.ColumnSpan="3" Grid.Row="2" Visibility="Hidden" MouseDoubleClick="listBox_PreviewMouseDown">
+            <ListView  x:Name="listBox2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.RowSpan="3" Grid.ColumnSpan="3" Grid.Row="1" Visibility="Hidden" MouseDoubleClick="listBox_PreviewMouseDown" Margin="0,63,0,0">
                 <ListView.View>
                     <GridView>
-                        <GridViewColumn Header="Имя" Width="120" DisplayMemberBinding="{Binding firstName}" />
-                        <GridViewColumn Header="Фамилия" Width="50" DisplayMemberBinding="{Binding lastName}" />
+                        <GridViewColumn Header="Дата рождения" Width="150" DisplayMemberBinding="{Binding bdate}" />
+                        <GridViewColumn Header="Страна" Width="150" DisplayMemberBinding="{Binding country}" />
+                        <GridViewColumn Header="Город" Width="150" DisplayMemberBinding="{Binding city}" />
                     </GridView>
                 </ListView.View>
                 <ListView.Resources>
@@ -51,7 +65,20 @@
                         <Setter Property="Template">
                             <Setter.Value>
                                 <ControlTemplate TargetType="{x:Type ListViewItem}">
-                                    <Expander Header="{Binding id}">
+                                    <Expander>
+                                        <Expander.Header>
+                                            <StackPanel>
+                                                <TextBlock>
+                                                    <TextBlock.Text>
+                                                        <MultiBinding StringFormat="{}{0} {1} {2}">
+                                                            <Binding Path = "id" />
+                                                            <Binding Path = "firstName" />
+                                                            <Binding Path = "lastName" />
+                                                        </MultiBinding>
+                                                    </TextBlock.Text>
+                                                </TextBlock>
+                                            </StackPanel>
+                                        </Expander.Header>
                                         <GridViewRowPresenter VerticalAlignment="{TemplateBinding VerticalContentAlignment}" Grid.IsSharedSizeScope="True">
                                         </GridViewRowPresenter>
                                     </Expander>

@@ -22,15 +22,16 @@ namespace Parser
     {
         public MainWindow()
         {
+            WindowStartupLocation = System.Windows.WindowStartupLocation.CenterScreen;
             this.InitializeComponent();
         }
 
         private void button_Click(object sender, RoutedEventArgs e)
         {
-            makesomeshit(Int32.Parse(textBox.Text));
+            profile(Int32.Parse(textBox.Text));
         }
 
-        private void makesomeshit(int id)
+        private void profile(int id)
         {
             User masha = new User(id);
             while (!masha.isReady)
@@ -71,7 +72,7 @@ namespace Parser
             {
                 var tmp = ((UserDescription)item.DataContext).id;
                 textBox.Text = tmp.ToString();
-                makesomeshit(tmp);
+                profile(tmp);
             }
         }
     }
