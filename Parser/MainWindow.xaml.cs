@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Xml;
 
 namespace Parser
 {
@@ -33,7 +35,7 @@ namespace Parser
 
         private void profile(int id)
         {
-            User masha = new User(id);
+            SearchEntity masha = new SearchEntity(id);
             while (!masha.isReady)
                 System.Threading.Tasks.Task.Delay(TimeSpan.FromSeconds(0.01)).Wait();
             UserDescription profile = masha.getDescription();
@@ -49,7 +51,7 @@ namespace Parser
 
         private void button2_Click(object sender, RoutedEventArgs e)
         {
-            User masha = new User(Int32.Parse(textBox.Text));
+            SearchEntity masha = new SearchEntity(Int32.Parse(textBox.Text));
             while (!masha.isReady)
                 System.Threading.Tasks.Task.Delay(TimeSpan.FromSeconds(0.01)).Wait();
             // now user is ready
@@ -60,9 +62,7 @@ namespace Parser
             FriendsList mashas_friends = masha.getFriends();
             this.listBox1.Visibility = System.Windows.Visibility.Hidden;
             this.listBox2.Visibility = System.Windows.Visibility.Visible;
-
-
-            this.listBox2.ItemsSource = mashas_friends.friends;
+            this.listBox2.ItemsSource = mashas_friends.friends;    
         }
 
         private void listBox_PreviewMouseDown(object sender, MouseButtonEventArgs e)
@@ -74,6 +74,57 @@ namespace Parser
                 textBox.Text = tmp.ToString();
                 profile(tmp);
             }
+        }
+
+        private Levels friendsList(SearchEntity masha, int i)
+        {
+            if (i <= 3)
+            {
+                Levels levels1 = new Levels(masha.getDescription(), new List<Levels>());
+                foreach (UserDescription user in masha.getFriends())
+                {
+                    SearchEntity tmp = new SearchEntity(user.id);
+                    while (!tmp.isReady)
+                        System.Threading.Tasks.Task.Delay(TimeSpan.FromSeconds(0.01)).Wait();
+                    levels1.friends.Add(friendsList(tmp, i + 1));
+                }
+                return levels1;            
+            }
+            else
+                return new Levels(masha.getDescription(), new List<Levels>());       
+        }
+
+        public string SerializeObject(object obj)
+        {
+            System.Xml.XmlDocument xmlDoc = new System.Xml.XmlDocument();
+            System.Xml.Serialization.XmlSerializer serializer = new System.Xml.Serialization.XmlSerializer(obj.GetType());
+            using (System.IO.MemoryStream ms = new System.IO.MemoryStream())
+            {
+                serializer.Serialize(ms, obj);
+                ms.Position = 0;
+                xmlDoc.Load(ms);
+                return xmlDoc.InnerXml;
+            }
+        }
+
+        private void button3_Click(object sender, RoutedEventArgs e)
+        {
+            Search town = new Search(Int32.Parse(textBox2.Text));
+            while (!town.isReady)
+                System.Threading.Tasks.Task.Delay(TimeSpan.FromSeconds(0.01)).Wait();
+            Random random = new Random();
+            int randomNumber = random.Next(0, 500);
+            Search search = town;
+            int id = search.search[randomNumber].id;
+            SearchEntity masha = new SearchEntity(id);
+            while (!masha.isReady)
+                System.Threading.Tasks.Task.Delay(TimeSpan.FromSeconds(0.01)).Wait();
+            List<UserDescription> mashas_friends = masha.getFriends().friends;
+            List<Levels> levelsList = new List<Levels>();
+            Levels levels = friendsList(masha, 0);
+            XmlDocument doc = new XmlDocument();
+            string str = SerializeObject(levels);
+            File.WriteAllText("MyFile.xml", str);
         }
     }
 }

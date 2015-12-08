@@ -13,7 +13,7 @@ namespace Parser
         // https://api.vk.com/method/'''METHOD_NAME'''?'''PARAMETERS'''&access_token='''ACCESS_TOKEN'''
 
         protected string data { get; set; }
-        protected string linkToServer = "http://api.vk.com/method/";
+        protected string linkToServer = "https://api.vk.com/method/";
         protected string link;
 
         protected string methodName;

@@ -9,6 +9,8 @@ namespace Parser
 {
     static class Constants
     {
+
+       
         // не можем для каждого пользователя отдельно обращаться к серверу, чтобы выяснить название страны по коду,
         // поэтому захардкодим наиболее вероятные
         static public Dictionary<int, string> countries = new Dictionary<int, string>()
@@ -82,6 +84,8 @@ namespace Parser
 
     public class UserDescription
     {
+
+        public UserDescription() { }
         // docs: https://vk.com/dev/fields
         // basic:
         public int id { get; set; }
@@ -129,7 +133,6 @@ namespace Parser
         public string about { get; set; } = null;
         public string quotes { get; set; } = null;
 
-
         private  string changeValue(string value)
         {
             if (value == null)
@@ -151,6 +154,9 @@ namespace Parser
                 switch (elem.Name.ToString())
                 {
                     case "uid":
+                        id = int.Parse(temp);
+                        break;
+                    case "id":
                         id = int.Parse(temp);
                         break;
                     case "first_name":

@@ -16,14 +16,17 @@
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
                 <RowDefinition Height="37*"/>
+                <RowDefinition Height="37*"/>
                 <RowDefinition Height="172*"/>
                 <RowDefinition Height="240*"/>
                 <RowDefinition Height="241*"/>
             </Grid.RowDefinitions>
             <TextBox x:Name="textBox" HorizontalAlignment="Stretch"  TextWrapping="Wrap" Text="1" VerticalAlignment="Stretch" Margin="45,5,35,5" />
+            <TextBox x:Name="textBox2" Grid.Column="0" Grid.Row="1" HorizontalAlignment="Stretch"  TextWrapping="Wrap" Text="1" VerticalAlignment="Stretch" Margin="45,5,35,5" />
             <Button x:Name="button" Content="Профиль" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="button_Click" Margin="30,0,30,0"/>
+            <Button x:Name="button3" Content="Поиск" Grid.Column="1" Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="button3_Click" Margin="30,0,30,0"/>
             <Button x:Name="button2" Content="Список друзей" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="button2_Click" Margin="30,0,30,0"/>
-            <ListBox x:Name="listBox1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.RowSpan="3" Grid.ColumnSpan="3" Grid.Row="1" Visibility="Visible" Margin="0,63,0,0">
+            <ListBox x:Name="listBox1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.RowSpan="3" Grid.ColumnSpan="3" Grid.Row="2" Visibility="Visible">
                 <ListBox.ItemTemplate>
                     <DataTemplate>
                         <StackPanel Orientation="Vertical">
@@ -50,7 +53,7 @@
                 </ListBox.ItemTemplate>
             </ListBox>
 
-            <ListView  x:Name="listBox2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.RowSpan="3" Grid.ColumnSpan="3" Grid.Row="1" Visibility="Hidden" MouseDoubleClick="listBox_PreviewMouseDown" Margin="0,63,0,0">
+            <ListView  x:Name="listBox2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.RowSpan="3" Grid.ColumnSpan="3" Grid.Row="1" Visibility="Hidden" MouseDoubleClick="listBox_PreviewMouseDown">
                 <ListView.View>
                     <GridView>
                         <GridViewColumn Header="Дата рождения" Width="150" DisplayMemberBinding="{Binding bdate}" />

@@ -10,7 +10,7 @@ using System.Xml.Linq;
 
 namespace Parser
 {
-    class FriendsList : DownloadableData
+    public class FriendsList : DownloadableData
     {
         //http://api.vk.com/method/friends.get.xml?user_id=2569908&fields=photoId,sex,bdate,city,country,online,domain,site,universities,status,followers_count&count=10
         public List<UserDescription> friends { get; set; }
